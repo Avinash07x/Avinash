@@ -1,5 +1,6 @@
 import React from "react";
 import Avinash from "../assets/Avinash.jpg"; // 🔄 Ensure you have your photo in /src/assets/
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -35,18 +36,18 @@ const Home = () => {
 
           {/* Buttons */}
           <div className="flex justify-center md:justify-start space-x-4">
-            <a
-              href="/projects"
+            <Link
+              to="/projects"
               className="px-6 py-3 bg-purple-600 text-white rounded-xl shadow-lg hover:bg-purple-700 transition-all duration-300"
             >
               View Projects
-            </a>
-            <a
-              href="/contact"
+            </Link>
+            <Link
+              to="/contact"
               className="px-6 py-3 border border-purple-600 text-purple-400 rounded-xl shadow-lg hover:bg-purple-600 hover:text-white transition-all duration-300"
             >
               Contact Me
-            </a>
+            </Link>
           </div>
         </div>
       </div>
