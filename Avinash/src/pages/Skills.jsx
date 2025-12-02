@@ -5,7 +5,7 @@ import jsLogo from "../assets/javascript.png";
 import reactLogo from "../assets/react.png";
 import reduxLogo from "../assets/redux.png";
 import bootstrapLogo from "../assets/bootstrap.png";
-import tailwindLogo from "../assets/tailwindCSS.png";
+import tailwindLogo from "../assets/tdlogo.png";
 import muiLogo from "../assets/mui.png";
 import nodeLogo from "../assets/node.png";
 import expressLogo from "../assets/express.png";
