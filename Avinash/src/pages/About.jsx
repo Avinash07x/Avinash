@@ -6,7 +6,7 @@ const About = () => {
       <div className="max-w-5xl mx-auto px-6 text-center space-y-10">
         
         {/* Heading */}
-        <h2 className="text-5xl font-bold gradient-text">About Me</h2>
+        <h2 className="text-5xl font-bold gradient-text ">About Me</h2>
 
         {/* Intro Text */}
         <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">

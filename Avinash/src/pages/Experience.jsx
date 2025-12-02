@@ -1,5 +1,7 @@
-import React from "react";
-import { Briefcase } from "lucide-react";
+import React, { useState } from "react";
+import { Briefcase, X } from "lucide-react";
+import certificate2 from "../assets/Appreciation Certificate.png";
+import certificate1 from "../assets/Avinash Internship Certificate.png";
 
 const experiences = [
   {
@@ -14,10 +16,11 @@ const experiences = [
       "Implemented modern development standards and best practices",
     ],
   },
-  // Add more experiences here if needed
 ];
 
 const Experience = () => {
+  const [selectedCert, setSelectedCert] = useState(null);
+
   return (
     <section id="experience" className="py-24 bg-gray-900">
       <div className="max-w-6xl mx-auto px-5 text-center">
@@ -54,6 +57,43 @@ const Experience = () => {
             </div>
           ))}
         </div>
+
+        {/* Certificates Section */}
+        <h2 className="text-4xl md:text-5xl font-bold gradient-text mt-20 mb-10">
+          Certificate
+        </h2>
+        <div className="flex flex-wrap justify-center gap-12">
+          {[certificate1, certificate2].map((cert, index) => (
+            <div
+              key={index}
+              className="w-[520px] bg-gray-800 rounded-2xl p-4 border border-gray-700 overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer"
+              onClick={() => setSelectedCert(cert)}
+            >
+              <img
+                src={cert}
+                alt={`Certificate ${index + 1}`}
+                className="rounded-xl w-full h-auto"
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Fullscreen Modal */}
+        {selectedCert && (
+          <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4">
+            <button
+              className="absolute top-5 right-5 text-white text-3xl"
+              onClick={() => setSelectedCert(null)}
+            >
+              <X />
+            </button>
+            <img
+              src={selectedCert}
+              alt="Full Certificate"
+              className="max-w-full max-h-full rounded-xl shadow-2xl"
+            />
+          </div>
+        )}
       </div>
     </section>
   );

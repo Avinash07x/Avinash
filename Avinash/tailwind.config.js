@@ -1,11 +1,35 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,jsx,ts,tsx}", // Tailwind scans all your React components
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        wobble: {
+          '0%, 100%': { transform: 'rotate(-5deg)' },
+          '50%': { transform: 'rotate(5deg)' },
+        },
+        glitch: {
+          '0%': { transform: 'translate(0, 0)' },
+          '10%': { transform: 'translate(-2px, -2px)' },
+          '20%': { transform: 'translate(2px, 2px)' },
+          '30%': { transform: 'translate(-2px, 2px)' },
+          '40%': { transform: 'translate(2px, -2px)' },
+          '50%': { transform: 'translate(-2px, -2px)' },
+          '60%': { transform: 'translate(2px, 2px)' },
+          '70%': { transform: 'translate(-1px, 1px)' },
+          '80%': { transform: 'translate(1px, -1px)' },
+          '90%': { transform: 'translate(-1px, -1px)' },
+          '100%': { transform: 'translate(0, 0)' },
+        },
+      },
+      animation: {
+        wobble: 'wobble 0.3s ease-in-out infinite',
+        fade: 'fade-in 2s ease-in-out forwards',
+        glitch: 'glitch 1s infinite',
+      },
+    },
   },
   plugins: [],
-}
+};
