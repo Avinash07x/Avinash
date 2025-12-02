@@ -1,6 +1,5 @@
 import React from "react";
 import { Github, ExternalLink, Figma } from "lucide-react";
-import EcomImg from "../assets/Unnatii.png";
 import TodoImg from "../assets/Todo.png";
 import WeatherImg from "../assets/Weather.png";
 import UnnatiiImg from "../assets/Unnatii1.png";
