@@ -588,7 +588,7 @@ import DC1 from "../assets/DC.png";
 import Portfolio1 from "../assets/Portfolio.png";
 import Calendar1 from "../assets/Calendar.png";
 import Cal1 from "../assets/Calculator.png";
-import Wood1 from "../assets/Woodland.png";
+import Wood1 from "../assets/woodland.png";
 
 // ✅ Project Data
 const projects = [
