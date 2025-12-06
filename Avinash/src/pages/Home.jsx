@@ -8,7 +8,7 @@ const Home = () => {
       {/* HERO SECTION */}
       <section
         id="home"
-        className="min-h-screen flex items-center justify-center px-6 py-20  bg-gray-900 from-purple-100 via-gray-100 to-blue-100"
+        className="min-h-screen flex items-center justify-center px-6 py-20"
       >
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
 

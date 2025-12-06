@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import TubesCursor from "https://cdn.jsdelivr.net/npm/threejs-components@0.0.19/build/cursors/tubes1.min.js";
+
+// ✅ Skill Logos
 import htmlLogo from "../assets/html.png";
 import cssLogo from "../assets/css.png";
 import jsLogo from "../assets/javascript.png";
@@ -17,39 +20,83 @@ import jwtLogo from "../assets/jwt.png";
 import gitLogo from "../assets/git.png";
 import githubLogo from "../assets/github.png";
 import postmanLogo from "../assets/postman.png";
-import figmaLogo from "../assets/figma.png";
 import lucide from "../assets/logo.svg";
 import googlefonts from "../assets/google-fonts.png";
 import vite from "../assets/vite.png";
 import vercelLogo from "../assets/Vercel.png";
 
+// ✅ Random Colors Generator
+function randomColors(count) {
+  return new Array(count)
+    .fill(0)
+    .map(
+      () =>
+        "#" +
+        Math.floor(Math.random() * 16777215)
+          .toString(16)
+          .padStart(6, "0")
+    );
+}
+
 const Skills = () => {
+  const canvasRef = useRef(null);
+  const appRef = useRef(null);
+
+  // ✅ Initialize Tubes Cursor Effect
+  useEffect(() => {
+    if (!canvasRef.current) return;
+
+    const app = TubesCursor(canvasRef.current, {
+      tubes: {
+        colors: ["#f967fb", "#53bc28", "#6958d5"],
+        lights: {
+          intensity: 200,
+          colors: ["#83f36e", "#fe8a2e", "#ff008a", "#60aed5"],
+        },
+      },
+    });
+
+    appRef.current = app;
+
+    const handleClick = () => {
+      const colors = randomColors(3);
+      const lightsColors = randomColors(4);
+      app.tubes.setColors(colors);
+      app.tubes.setLightsColors(lightsColors);
+    };
+
+    document.body.addEventListener("click", handleClick);
+
+    return () => {
+      document.body.removeEventListener("click", handleClick);
+    };
+  }, []);
+
+  // ✅ Skills Data
   const skills = {
     frontend: [
       { name: "HTML5", logo: htmlLogo },
       { name: "CSS3", logo: cssLogo },
-      { name: "JavaScript ES6+", logo: jsLogo },
+      { name: "JavaScript", logo: jsLogo },
       { name: "React.js", logo: reactLogo },
       { name: "Redux", logo: reduxLogo },
       { name: "Bootstrap", logo: bootstrapLogo },
       { name: "Tailwind CSS", logo: tailwindLogo },
-      { name: "Material-UI", logo: muiLogo },
+      { name: "Material UI", logo: muiLogo },
     ],
     backend: [
       { name: "Node.js", logo: nodeLogo },
       { name: "Express.js", logo: expressLogo },
       { name: "Middleware", logo: middleware },
-      { name: "RESTful APIs", logo: restapi },
+      { name: "REST API", logo: restapi },
       { name: "MongoDB", logo: mongoLogo },
       { name: "Mongoose", logo: mongoose },
-      { name: "JWT Authentication", logo: jwtLogo },
-
+      { name: "JWT Auth", logo: jwtLogo },
     ],
     tools: [
       { name: "Git", logo: gitLogo },
       { name: "GitHub", logo: githubLogo },
       { name: "Postman", logo: postmanLogo },
-      { name: "Figma", logo: figmaLogo },
       { name: "Google Fonts", logo: googlefonts },
       { name: "Lucide Icons", logo: lucide },
       { name: "Vite", logo: vite },
@@ -76,45 +123,54 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-24 bg-gray-900">
-      <div className="max-w-6xl mx-auto px-5 text-center">
-        <h2 className="text-5xl md:text-6xl font-extrabold mb-14 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
-          Technical Skills
-        </h2>
+    <section id="skills" className="relative min-h-screen overflow-hidden">
+      {/* ✅ Tubes Canvas Background */}
+      <canvas
+        ref={canvasRef}
+        className="fixed top-0 left-0 w-full h-full z-0"
+      />
 
-        <div className="grid md:grid-cols-3 gap-10">
-          {categories.map((cat, idx) => (
-            <div
-              key={idx}
-              className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 
-                         shadow-[0px_0px_20px_rgba(0,0,0,0.4)] 
-                         hover:shadow-[0px_0px_35px_rgba(80,80,255,0.5)]
-                         transition-all hover:-translate-y-2 duration-300"
-            >
-              <h3 className="text-2xl font-semibold text-white mb-6">
-                {cat.title}
-              </h3>
+      {/* ✅ Content */}
+      <div className="relative z-10 py-24 bg-black/40 backdrop-blur-sm">
+        <div className="max-w-6xl mx-auto px-5 text-center">
+          <h2 className="text-5xl md:text-6xl font-extrabold mb-14 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
+            Technical Skills
+          </h2>
 
-              <div className="flex flex-wrap justify-center gap-3">
-                {cat.items.map((skill, index) => (
-                  <div
-                    key={index}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-full 
-                               bg-gradient-to-r ${cat.color} text-white
-                               shadow-md hover:shadow-xl 
-                               transition-all duration-300 hover:scale-105`}
-                  >
-                    <img
-                      src={skill.logo}
-                      alt={skill.name}
-                      className="w-5 h-5 object-contain"
-                    />
-                    <span className="font-medium">{skill.name}</span>
-                  </div>
-                ))}
+          <div className="grid md:grid-cols-3 gap-10">
+            {categories.map((cat, idx) => (
+              <div
+                key={idx}
+                className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 
+                           shadow-[0px_0px_20px_rgba(0,0,0,0.4)] 
+                           hover:shadow-[0px_0px_35px_rgba(80,80,255,0.5)]
+                           transition-all hover:-translate-y-2 duration-300"
+              >
+                <h3 className="text-2xl font-semibold text-white mb-6">
+                  {cat.title}
+                </h3>
+
+                <div className="flex flex-wrap justify-center gap-3">
+                  {cat.items.map((skill, index) => (
+                    <div
+                      key={index}
+                      className={`flex items-center gap-2 px-4 py-2 rounded-full 
+                                 bg-gradient-to-r ${cat.color} text-white
+                                 shadow-md hover:shadow-xl 
+                                 transition-all duration-300 hover:scale-105`}
+                    >
+                      <img
+                        src={skill.logo}
+                        alt={skill.name}
+                        className="w-5 h-5 object-contain"
+                      />
+                      <span className="font-medium">{skill.name}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
