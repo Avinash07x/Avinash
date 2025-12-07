@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import Abouts from "../assets/Aboutv2.webm"; // ✅ Correct for GIF
+import Abouts from "../assets/Aboutv2.webm"; 
 
 const About = () => {
   const statsRef = useRef(null);
   const [startCount, setStartCount] = useState(false);
   const [projectCount, setProjectCount] = useState(0);
 
-  // Trigger animation on scroll
+  // ✅ Trigger animation on scroll
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -21,7 +21,7 @@ const About = () => {
     if (statsRef.current) observer.observe(statsRef.current);
   }, []);
 
-  // Project counter animation
+  // ✅ Project counter animation
   useEffect(() => {
     if (!startCount) return;
 
@@ -40,9 +40,11 @@ const About = () => {
     <section id="about" className="py-20 bg-gray-900 relative">
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
 
-        {/* LEFT CONTENT */}
+        {/* ✅ LEFT CONTENT */}
         <div className="space-y-8 text-center md:text-left">
-          <h2 className="text-5xl font-bold gradient-text">About Me</h2>
+          <h2 className="text-5xl font-bold text-blue-500 gradient-text">
+            About Me
+          </h2>
 
           <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
             I'm <span className="text-blue-400 font-semibold">Avinash Sharma</span>, 
@@ -54,7 +56,7 @@ const About = () => {
             My approach to development is focused on clean code, performance, and UI/UX.
           </p>
 
-          {/* STATS */}
+          {/* ✅ STATS */}
           <div ref={statsRef} className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-6">
 
             <div className="p-6 bg-blue-600 bg-opacity-10 rounded-xl border border-blue-600 shadow-md">
@@ -77,12 +79,15 @@ const About = () => {
           </div>
         </div>
 
-        {/* ✅ RIGHT SIDE GIF (FIXED) */}
+        {/* ✅ RIGHT SIDE VIDEO (WEBM FIXED ✅) */}
         <div className="flex justify-center">
-          <div className="w-full max-w-md rounded-2xl overflow-hidden border border-gray-700 shadow-lg">
-            <img
+          <div className="w-full max-w-md  overflow-hidden">
+            <video
               src={Abouts}
-              alt="About animation"
+              autoPlay
+              loop
+              muted
+              playsInline
               className="w-full h-full object-cover"
             />
           </div>

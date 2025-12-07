@@ -6,10 +6,6 @@ module.exports = {
   theme: {
     extend: {
       keyframes: {
-        wobble: {
-          '0%, 100%': { transform: 'rotate(-5deg)' },
-          '50%': { transform: 'rotate(5deg)' },
-        },
         glitch: {
           '0%': { transform: 'translate(0, 0)' },
           '10%': { transform: 'translate(-2px, -2px)' },
@@ -25,8 +21,6 @@ module.exports = {
         },
       },
       animation: {
-        wobble: 'wobble 0.3s ease-in-out infinite',
-        fade: 'fade-in 2s ease-in-out forwards',
         glitch: 'glitch 1s infinite',
       },
     },

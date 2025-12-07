@@ -15,7 +15,7 @@ const Contact = () => {
       <div className="max-w-6xl mx-auto px-5 text-center space-y-12">
 
         {/* Heading */}
-        <h2 className="text-5xl md:text-6xl font-bold gradient-text">
+        <h2 className="text-5xl md:text-6xl font-bold text-blue-500 gradient-text">
           Let's Connect
         </h2>
         <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">

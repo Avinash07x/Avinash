@@ -1,5 +1,4 @@
-import React, { useEffect, useRef } from "react";
-import TubesCursor from "https://cdn.jsdelivr.net/npm/threejs-components@0.0.19/build/cursors/tubes1.min.js";
+import React, { useRef } from "react";
 
 // ✅ Skill Logos
 import htmlLogo from "../assets/html.png";
@@ -25,52 +24,8 @@ import googlefonts from "../assets/google-fonts.png";
 import vite from "../assets/vite.png";
 import vercelLogo from "../assets/Vercel.png";
 
-// ✅ Random Colors Generator
-function randomColors(count) {
-  return new Array(count)
-    .fill(0)
-    .map(
-      () =>
-        "#" +
-        Math.floor(Math.random() * 16777215)
-          .toString(16)
-          .padStart(6, "0")
-    );
-}
-
 const Skills = () => {
   const canvasRef = useRef(null);
-  const appRef = useRef(null);
-
-  // ✅ Initialize Tubes Cursor Effect
-  useEffect(() => {
-    if (!canvasRef.current) return;
-
-    const app = TubesCursor(canvasRef.current, {
-      tubes: {
-        colors: ["#f967fb", "#53bc28", "#6958d5"],
-        lights: {
-          intensity: 200,
-          colors: ["#83f36e", "#fe8a2e", "#ff008a", "#60aed5"],
-        },
-      },
-    });
-
-    appRef.current = app;
-
-    const handleClick = () => {
-      const colors = randomColors(3);
-      const lightsColors = randomColors(4);
-      app.tubes.setColors(colors);
-      app.tubes.setLightsColors(lightsColors);
-    };
-
-    document.body.addEventListener("click", handleClick);
-
-    return () => {
-      document.body.removeEventListener("click", handleClick);
-    };
-  }, []);
 
   // ✅ Skills Data
   const skills = {
@@ -123,17 +78,17 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="relative min-h-screen overflow-hidden">
-      {/* ✅ Tubes Canvas Background */}
+    <section id="skills" className="relative min-h-screen bg-gray-900 overflow-hidden">
+      {/* ✅ Background Canvas (Optional / Decorative Only Now) */}
       <canvas
         ref={canvasRef}
         className="fixed top-0 left-0 w-full h-full z-0"
       />
 
       {/* ✅ Content */}
-      <div className="relative z-10 py-24 bg-black/40 backdrop-blur-sm">
+      <div className="relative z-10 py-24 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto px-5 text-center">
-          <h2 className="text-5xl md:text-6xl font-extrabold mb-14 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
+          <h2 className="text-5xl md:text-6xl font-extrabold mb-14 text-blue-500 text-transparent bg-clip-text">
             Technical Skills
           </h2>
 

@@ -8,7 +8,7 @@ const Home = () => {
       {/* HERO SECTION */}
       <section
         id="home"
-        className="min-h-screen flex items-center justify-center px-6 py-20"
+        className="min-h-screen flex items-center justify-center bg-gray-900 px-6 py-20"
       >
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
 
@@ -16,7 +16,7 @@ const Home = () => {
           <div className="space-y-6 md:pr-6">
             <p className="text-purple-600 font-medium text-lg">Hello, I am</p>
 
-            <h1 className="text-5xl md:text-6xl font-extrabold text-gray leading-tight">
+            <h1 className="text-5xl md:text-6xl font-extrabold text-blue-500 leading-tight">
               Avinash Sharma
             </h1>
 
